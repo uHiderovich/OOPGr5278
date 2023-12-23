@@ -20,7 +20,7 @@ public class Bottle extends Product {
     @Override 
     public String toString()
     {
-        return super.toString() + "volume="+bottleVolume+"\n";
+        return super.toString() + "volume = " + bottleVolume + "\n";
     }
     
 }
