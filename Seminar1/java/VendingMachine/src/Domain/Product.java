@@ -2,17 +2,20 @@ package Domain;
 
 public class Product {
     // Поля
+    static long lastId = 0;
+    private long id;
     private int price;
     private int place;
     private String name;
-    private long id;
 
     // Конструктор
-    public Product(int price, int place, String name, long id) {
+    public Product(int price, int place, String name) {
+        this.id = Product.lastId + 1;
+        Product.lastId = this.id;
+
         this.price = price;
         this.place = place;
         this.name = name;
-        this.id = id;
     }
 
     //Методы
@@ -44,25 +47,9 @@ public class Product {
         this.name = name;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     //Переопределяем вывод текста
     @Override
     public String toString(){
-        return "Price = " + this.price+"\n"+
-                "Place = " + this.place+"\n"+
-                "Name = " + this.name+"\n"+
-                "ID = " + this.id+"\n";
+        return this.name + " - " + this.price + "Руб.";
     }
-
 }
-
-// HightCamelStyle
-// lowCamelStyle
-// snake_style

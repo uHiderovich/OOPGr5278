@@ -3,8 +3,8 @@ package Domain;
 public class HotDrink extends Product {
     private float temp;
 
-    public HotDrink(int price, int place, String name, long id, float temp) {
-        super(price, place, name, id);
+    public HotDrink(int price, int place, String name, float temp) {
+        super(price, place, name);
         this.temp = temp;
     }
 
@@ -17,8 +17,7 @@ public class HotDrink extends Product {
     }
 
     @Override
-    public String toString()
-    {
-        return super.toString() + "Temperature = " + temp + "\n";
+    public String toString() {
+        return this.getName() + " " + temp + "°" + " - " + this.getPrice() + "Руб.";
     }
 }

@@ -12,18 +12,16 @@ import Services.VendingMachine;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Product item1 = new Product(100, 12, "Lays", 1234);
-        Product item2 = new Product(120, 14, "Nuts", 1235);
-        Product item3 = new Product(90, 16, "Chips", 1236);
-        Product item4 = new Product(20, 18, "Milka", 1237);
-        Product item5 = new Product(60, 1, "3korochki", 1238);
-        Product item6 = new Product(150, 2, "snikers", 1239);
-        Product item7 = new Bottle(150, 3, "Cola", 1240, 0.5f);
-        Product item8 = new HotDrink(150, 3, "Cola", 1241, 75.6f);
-        Product item9 = new HotDrink(150, 3, "Cola", 1242, 90.5f);
-        Product item10 = new HotDrink(150, 3, "Cola", 1243, 91.0f);
-
-       // System.out.println(item7);
+        Product item1 = new Product(100, 12, "Lays");
+        Product item2 = new Product(120, 14, "Nuts");
+        Product item3 = new Product(90, 16, "Chips");
+        Product item4 = new Product(20, 18, "Milka");
+        Product item5 = new Product(60, 1, "3korochki");
+        Product item6 = new Product(150, 2, "snikers");
+        Product item7 = new Bottle(150, 3, "Cola", 0.5f);
+        Product item8 = new HotDrink(150, 3, "Coffee", 75.6f);
+        Product item9 = new HotDrink(150, 3, "Tea", 90.5f);
+        Product item10 = new HotDrink(150, 3, "Tea", 91.0f);
 
         Holder hold = new Holder();
         CoinDispenser coin = new CoinDispenser();
@@ -48,7 +46,7 @@ public class App {
             System.out.println(p);
         }
 
-//        MainFrame myFrame = new MainFrame();
-//        myFrame.initialize();
+        MainFrame myFrame = new MainFrame(vm);
+        myFrame.initialize();
     }
 }

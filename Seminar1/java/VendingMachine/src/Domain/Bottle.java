@@ -4,8 +4,8 @@ public class Bottle extends Product {
 
     private float bottleVolume;
 
-    public Bottle(int price, int place, String name, long id, float bottleVolume) {
-        super(price, place, name, id);
+    public Bottle(int price, int place, String name, float bottleVolume) {
+        super(price, place, name);
         this.bottleVolume = bottleVolume;
     }
 
@@ -18,9 +18,8 @@ public class Bottle extends Product {
     }
     
     @Override 
-    public String toString()
-    {
-        return super.toString() + "volume = " + bottleVolume + "\n";
+    public String toString() {
+        return this.getName() + " " + bottleVolume + "Л." + " - " + this.getPrice() + "Руб.";
     }
     
 }
