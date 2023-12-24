@@ -19,11 +19,11 @@ public class App {
         Product item5 = new Product(60, 1, "3korochki", 1238);
         Product item6 = new Product(150, 2, "snikers", 1239);
         Product item7 = new Bottle(150, 3, "Cola", 1240, 0.5f);
-        Product item8 = new HotDrink(150, 3, "Coffee", 1241, 75.6f);
-        Product item9 = new HotDrink(150, 3, "Tea", 1242, 90.5f);
-        Product item10 = new HotDrink(150, 3, "Tea", 1243, 91.0f);
+        Product item8 = new HotDrink(150, 3, "Coffee", 1241, 0.3f, 75.6f);
+        Product item9 = new HotDrink(150, 3, "Tea", 1242, 0.2f, 90.5f);
+        Product item10 = new HotDrink(150, 3, "Tea", 1243, 0.2f, 91.0f);
 
-       // System.out.println(item7);
+        // System.out.println(item7);
 
         Holder hold = new Holder();
         CoinDispenser coin = new CoinDispenser();
@@ -48,7 +48,7 @@ public class App {
             System.out.println(p);
         }
 
-//        MainFrame myFrame = new MainFrame();
-//        myFrame.initialize();
+        // MainFrame myFrame = new MainFrame();
+        // myFrame.initialize();
     }
 }
