@@ -40,7 +40,4 @@ public class TaxInspector implements iActorBehaviour {
     public Actor geActor() {
         return new OrdinaryClient(name);
     }
-
-
-
 }

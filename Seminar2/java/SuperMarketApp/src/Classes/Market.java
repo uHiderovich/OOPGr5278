@@ -3,12 +3,10 @@ package Classes;
 import java.util.ArrayList;
 import java.util.List;
 
-import Interfaces.iActorBehaviour;
-import Interfaces.iMarcketBehaviour;
-import Interfaces.iQueueBehaviour;
+import Interfaces.*;
 
-public class Market implements iMarcketBehaviour,iQueueBehaviour {
-
+public class Market implements iMarketBehaviour,iQueueBehaviour {
+    private static int promotionActorCounter = 0;
     private List<iActorBehaviour> queue;
 
     public Market() {
@@ -28,12 +26,11 @@ public class Market implements iMarcketBehaviour,iQueueBehaviour {
     }
 
     @Override
-    public void releseFromMarket(List<Actor> actors) {
+    public void releaseFromMarket(List<Actor> actors) {
         for (Actor actor : actors) {
             System.out.println(actor.getName() + " клиент ушел из магазина ");
             queue.remove(actor);
         }
-
     }
 
     @Override
@@ -62,7 +59,7 @@ public class Market implements iMarcketBehaviour,iQueueBehaviour {
                 System.out.println(actor.geActor().getName() + " клиент ушел из очереди ");
             }
         }
-        releseFromMarket(releaseActors);
+        releaseFromMarket(releaseActors);
     }
 
     @Override
@@ -71,14 +68,9 @@ public class Market implements iMarcketBehaviour,iQueueBehaviour {
             if (!actor.isMakeOrder()) {
                 actor.setMakeOrder(true);
                 System.out.println(actor.geActor().getName() + " клиент сделал заказ ");
-
             }
         }
-
     }
-
-
-
 }
-    
+
 
