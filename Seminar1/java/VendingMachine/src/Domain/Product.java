@@ -43,8 +43,8 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public long getId() {
+        return id;
     }
 
     //Переопределяем вывод текста

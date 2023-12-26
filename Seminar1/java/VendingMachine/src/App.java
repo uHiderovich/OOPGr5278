@@ -41,10 +41,10 @@ public class App {
 
         VendingMachine vm = new VendingMachine(hold, coin, disp, listProd);
 
-        for (Product p : vm.getAssort()) {
-
-            System.out.println(p);
-        }
+//        for (Product p : vm.getAssort()) {
+//
+//            System.out.println(p);
+//        }
 
         MainFrame myFrame = new MainFrame(vm);
         myFrame.initialize();
