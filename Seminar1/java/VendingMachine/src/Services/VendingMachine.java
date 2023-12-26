@@ -10,7 +10,7 @@ public class VendingMachine {
     private CoinDispenser coin;
     private Display disp;
     private List<Product> assort;
-    
+
     public VendingMachine(Holder hold, CoinDispenser coin, Display disp, List<Product> assort) {
         this.hold = hold;
         this.coin = coin;
@@ -18,14 +18,27 @@ public class VendingMachine {
         this.assort = assort;
     }
 
-    public void buyProduct()
+    public Product buyProduct(long productId, int coins) throws CoinsValueException
     {
+        for (Product product : assort) {
+            if (product.getId() == productId) {
+                if (product.getPrice() <= coins) {
+                    coin.addCoins(coins);
+                    releaseProduct(product);
 
+                    return product;
+                } else {
+                    throw new CoinsValueException("Не хватает денег :(");
+                }
+            }
+        }
+
+        return null;
     }
 
-    public void releaseProduct()
+    public void releaseProduct(Product product)
     {
-        
+        assort.remove(product);
     }
 
     public Holder getHold() {
@@ -60,5 +73,5 @@ public class VendingMachine {
         this.assort = assort;
     }
 
-     
+
 }
