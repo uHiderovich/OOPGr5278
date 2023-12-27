@@ -10,7 +10,7 @@ public interface iActorBehaviour {
     public boolean isTakeOrder();
 
     /**
-     * Метод проверки, что у покумателя есть заказ
+     * Метод проверки, что покуматель сделал заказ
      * @return boolean
      */
     public boolean isMakeOrder();
@@ -30,5 +30,5 @@ public interface iActorBehaviour {
     /**
      * Метод получения объекта покумателя
      */
-    public Actor geActor();
+    public Actor getActor();
 }

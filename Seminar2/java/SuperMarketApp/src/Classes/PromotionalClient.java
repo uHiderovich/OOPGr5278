@@ -1,22 +1,56 @@
 package Classes;
 
 public class PromotionalClient extends Actor {
-    private static int count = 0;
+    /**
+     * Последный установленный уникальный идентификатор покупателя
+     */
     private static int lastId = 0;
 
-    private String promotionName;
+    /**
+     * Текущее кол-во полкупателей участвующих в акции
+     */
+    private static int count = 0;
+
+    /**
+     * Максимальное кол-во полкупателей участвующих в акции
+     */
+    private static int maxCount = 2;
+
+    /**
+     * Уникальный идентификатор покупателя
+     */
     private Integer id;
+
+    /**
+     * Флаг наличия дефектного товара
+     */
+    private boolean isHasDefectiveProduct;
+
+    /**
+     * Текущее кол-во полкупателей участвующих в акции
+     */
+    private int promotionNumber = 0;
+
+    /**
+     * Название акции
+     */
+    private String promotionName;
 
     public PromotionalClient(String name, String promotionName) {
         super(name);
         this.promotionName = promotionName;
 
         PromotionalClient.lastId += 1;
-        this.id = PromotionalClient.lastId;
+        this.id = this.lastId;
 
         PromotionalClient.count += 1;
+        this.promotionNumber = PromotionalClient.count;
     }
 
+    /**
+     * Метод получаения кол-ва покупателей участвующих в акции
+     * @return count Кол-во покупателей
+     */
     public static int getCount() {
         return count;
     }
@@ -36,7 +70,7 @@ public class PromotionalClient extends Actor {
         super.isMakeOrder = val;
     }
 
-    public Actor geActor() {
+    public Actor getActor() {
         return this;
     }
 
@@ -44,20 +78,39 @@ public class PromotionalClient extends Actor {
         return super.name;
     }
 
-    public String getPromotionName() {
-        return promotionName;
-    }
-
-    public void setPromotionName(String promotionName) {
-        this.promotionName = promotionName;
-    }
-
     public int getId() {
         return id;
     }
 
-    @Override
-    public void setName(String name) {
-        super.name = name;
+    public boolean isHasDefectiveProduct() {
+        return isHasDefectiveProduct;
+    }
+
+    public void setHasDefectiveProduct(boolean val) {
+        this.isHasDefectiveProduct = val;
+    }
+
+    public void returnOrder() {
+        setHasDefectiveProduct(false);
+    }
+
+    /**
+     * Метод получения названия акции в которой участвует покуматель
+     * @return
+     */
+    public String getPromotionName() {
+        return promotionName;
+    }
+
+    /**
+     * Метод установки названия акции в которой участвует покуматель
+     * @return
+     */
+    public void setPromotionName(String promotionName) {
+        this.promotionName = promotionName;
+    }
+
+    public boolean isServiceAvailable() {
+        return this.promotionNumber < PromotionalClient.maxCount;
     }
 }

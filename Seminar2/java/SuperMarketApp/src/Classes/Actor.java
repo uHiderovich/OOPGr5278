@@ -1,8 +1,9 @@
 package Classes;
 
 import Interfaces.iActorBehaviour;
+import Interfaces.iReturnOrder;
 
-public abstract class Actor implements iActorBehaviour {
+public abstract class Actor implements iActorBehaviour, iReturnOrder {
     /**
      * Имя покупателя
      */
@@ -31,4 +32,16 @@ public abstract class Actor implements iActorBehaviour {
      * @return Имя покупателя
      */
     public abstract String getName();
+
+    /**
+     * Метод получения уникального id покупателя
+     * @return Уникальный id покупателя
+     */
+    public abstract int getId();
+
+    /**
+     * Метод проверки доступности обслуживания покупателя
+     * @return
+     */
+    public abstract boolean isServiceAvailable();
 }
