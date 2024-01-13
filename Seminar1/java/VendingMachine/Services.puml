@@ -1,0 +1,24 @@
+@startuml
+class Services.Display {
+}
+class Services.Holder {
+}
+class Services.VendingMachine {
+- Holder hold
+- CoinDispenser coin
+- Display disp
+- List<Product> assort
++ void buyProduct()
++ void releaseProduct()
++ Holder getHold()
++ void setHold(Holder)
++ CoinDispenser getCoin()
++ void setCoin(CoinDispenser)
++ Display getDisp()
++ void setDisp(Display)
++ List<Product> getAssort()
++ void setAssort(List<Product>)
+}
+class Services.CoinDispenser {
+}
+@enduml

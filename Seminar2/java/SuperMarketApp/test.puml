@@ -1,0 +1,122 @@
+@startuml
+class Classes.TaxInspector {
+- String name
+- boolean isTakeOrder
+- boolean isMakeOrder
+- boolean isHasDefectiveProduct
++ <<Create>> TaxInspector()
++ String getName()
++ boolean isTakeOrder()
++ boolean isMakeOrder()
++ void setTakeOrder(boolean)
++ void setMakeOrder(boolean)
++ Actor getActor()
++ boolean isHasDefectiveProduct()
++ void setHasDefectiveProduct(boolean)
++ void returnOrder()
++ boolean isServiceAvailable()
+}
+class Classes.MarkerLogger {
+- {static} File log
+- {static} FileWriter fileWriter
++ void initLogFileWriter()
+~ {static} String createLog(String)
++ void writeLog(String)
++ void closeFileWriter()
+}
+class Classes.PromotionalClient {
+- {static} int lastId
+- {static} int count
+- {static} int maxCount
+- Integer id
+- boolean isHasDefectiveProduct
+- int promotionNumber
+- String promotionName
++ <<Create>> PromotionalClient(String,String)
++ {static} int getCount()
++ boolean isTakeOrder()
++ boolean isMakeOrder()
++ void setTakeOrder(boolean)
++ void setMakeOrder(boolean)
++ Actor getActor()
++ String getName()
++ int getId()
++ boolean isHasDefectiveProduct()
++ void setHasDefectiveProduct(boolean)
++ void returnOrder()
++ String getPromotionName()
++ void setPromotionName(String)
++ boolean isServiceAvailable()
+}
+abstract class Classes.Actor {
+# String name
+# boolean isTakeOrder
+# boolean isMakeOrder
++ <<Create>> Actor(String)
++ {abstract}String getName()
++ {abstract}int getId()
++ {abstract}boolean isServiceAvailable()
+}
+class Classes.Market {
+- List<iActorBehaviour> queue
+- MarkerLogger logger
++ <<Create>> Market()
++ void checkOrder()
++ void acceptToMarket(iActorBehaviour)
++ void takeInQueue(iActorBehaviour)
++ void releaseFromMarket(List<Actor>)
++ void update()
++ void giveOrder()
++ void releaseFromQueue()
++ void takeOrder()
+- void writeLog(String)
+}
+class Classes.OrdinaryClient {
+- {static} int lastId
+- Integer id
+- boolean isHasDefectiveProduct
++ <<Create>> OrdinaryClient(String)
++ boolean isTakeOrder()
++ boolean isMakeOrder()
++ void setTakeOrder(boolean)
++ void setMakeOrder(boolean)
++ Actor getActor()
++ int getId()
++ String getName()
++ boolean isHasDefectiveProduct()
++ void setHasDefectiveProduct(boolean)
++ void returnOrder()
++ boolean isServiceAvailable()
+}
+class Classes.SpecialClient {
+- {static} int lastId
+- Integer id
+- boolean isHasDefectiveProduct
+- int idVIP
++ <<Create>> SpecialClient(String,int)
++ boolean isTakeOrder()
++ boolean isMakeOrder()
++ void setTakeOrder(boolean)
++ void setMakeOrder(boolean)
++ Actor getActor()
++ String getName()
++ int getId()
++ int getIdVIP()
++ boolean isHasDefectiveProduct()
++ void setHasDefectiveProduct(boolean)
++ void returnOrder()
++ boolean isServiceAvailable()
+}
+
+
+Interfaces.iActorBehaviour <|.. Classes.TaxInspector
+Interfaces.iReturnOrder <|.. Classes.TaxInspector
+Classes.Actor <|-- Classes.PromotionalClient
+Interfaces.iActorBehaviour <|.. Classes.Actor
+Interfaces.iReturnOrder <|.. Classes.Actor
+Interfaces.iMarketBehaviour <|.. Classes.Market
+Interfaces.iQueueBehaviour <|.. Classes.Market
+Interfaces.iLoggerBehaviour <|.. Classes.Market
+Classes.Actor <|-- Classes.OrdinaryClient
+Classes.Actor <|-- Classes.SpecialClient
+@enduml
