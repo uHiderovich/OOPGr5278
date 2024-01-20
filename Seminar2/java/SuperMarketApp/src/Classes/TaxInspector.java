@@ -1,46 +1,61 @@
 package Classes;
 
 import Interfaces.iActorBehaviour;
+import Interfaces.iReturnOrder;
 
-public class TaxInspector implements iActorBehaviour {
+public class TaxInspector implements iActorBehaviour, iReturnOrder {
     private String name;
+
     private boolean isTakeOrder;
+
     private boolean isMakeOrder;
+
+    /**
+     * Флаг наличия дефектного товара
+     */
+    private boolean isHasDefectiveProduct;
 
     public TaxInspector() {
         this.name = "Tax audit";
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    @Override
     public boolean isTakeOrder() {
         return isTakeOrder;
     }
 
-    @Override
     public boolean isMakeOrder() {
         return isMakeOrder;
     }
 
-    @Override
     public void setTakeOrder(boolean val) {
-       this.isTakeOrder = val;
+        this.isTakeOrder = val;
     }
 
-    @Override
     public void setMakeOrder(boolean val) {
         this.isMakeOrder = val;
     }
 
-    @Override
-    public Actor geActor() {
+    public Actor getActor() {
         return new OrdinaryClient(name);
     }
 
+    public boolean isHasDefectiveProduct() {
+        return isHasDefectiveProduct;
+    }
 
+    public void setHasDefectiveProduct(boolean val) {
+        this.isHasDefectiveProduct = val;
+    }
 
+    public void returnOrder() {
+        setHasDefectiveProduct(false);
+    }
+
+    public boolean isServiceAvailable() {
+        return true;
+    }
 }
