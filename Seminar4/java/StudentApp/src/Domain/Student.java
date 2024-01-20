@@ -1,8 +1,6 @@
 package Domain;
 
-
 public class Student<T extends String, E extends Integer> extends Person implements Comparable<Student> {
-
     private int id;
     private static int generalId;
 
@@ -44,7 +42,6 @@ public class Student<T extends String, E extends Integer> extends Person impleme
         }
 
         return 0;
-    }
 }
 
 

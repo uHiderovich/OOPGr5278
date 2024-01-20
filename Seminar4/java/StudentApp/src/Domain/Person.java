@@ -29,7 +29,6 @@ public abstract class Person<T extends String, E extends Integer> {
     public String toString() {
         return "Person [name=" + name + ", age=" + age + "]";
     }
-
 }
 
 
