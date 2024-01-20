@@ -3,7 +3,7 @@ package Domain;
 import java.util.Iterator;
 import java.util.List;
 
-public class StudentGroup implements Iterable<Student> {
+public class StudentGroup implements Iterable<Student>, Comparable<StudentGroup> {
     private List<Student> group;
     private Integer idGroup;
 
@@ -24,51 +24,38 @@ public class StudentGroup implements Iterable<Student> {
         return idGroup;
     }
 
-    public void setIdGroup(Integer idGroup) {
-        this.idGroup = idGroup;
-    }
-
-     @Override
+    @Override
     public String toString() {
-        return "StudentGroup{" +
-                "group=" + group +
-                ", idGroup=" + idGroup +
-                '}';
+        return "\n  StudentGroup {\n" +
+                "   idGroup = " + idGroup +
+                "\n   studentsNumber = " + group.size() +
+                "\n   group = " + group +
+                "\n  }";
     }
 
-    // @Override
-    // public Iterator<Student> iterator() {
-    //    return new Iterator<Student>() {
-
-    //     private int counter;
-
-    //     @Override
-    //     public boolean hasNext() {
-
-    //         if(counter<group.size())
-    //         {
-    //             return true;
-    //         }
-    //         else
-    //         {
-    //             return false;
-    //         }            
-    //     }
-
-    //     @Override
-    //     public Student next() {            
-    //         return group.get(counter++);
-    //     }
-        
-    //    };
-        
-    // }
-
-     @Override
+    @Override
     public Iterator<Student> iterator() {
        return new StudentIterator(group);
-        
     }
-    
-    
+
+    @Override
+    public int compareTo(StudentGroup g) {
+        if (g.getGroup().size() > group.size()) {
+            return -1;
+        }
+
+        if (g.getGroup().size() < group.size()) {
+            return 1;
+        }
+
+        if (g.getIdGroup() > idGroup) {
+            return -1;
+        }
+
+        if (g.getIdGroup() < idGroup) {
+            return 1;
+        }
+
+        return 0;
+    }
 }

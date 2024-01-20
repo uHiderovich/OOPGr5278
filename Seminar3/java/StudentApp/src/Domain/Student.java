@@ -20,31 +20,36 @@ public class Student extends Person implements Comparable<Student> {
 
     @Override
     public String toString() {
-        return "Students [age=" + super.getAge() + ", name=" + super.getName() + ", id=" + id + "]";
+        return "\n    Student [id=" + id + ", name=" + super.getName() + ", age=" + super.getAge() + "]";
     }
 
     @Override
     public int compareTo(Student o) {
+        System.out.println(super.getName() + " - " + o.getName());
 
-        System.out.println(super.getName()+" - "+o.getName());
-        if(super.getAge()==o.getAge())
-        {
-            if(id==o.id)return 0 ;
-            if(id>o.id)return 1;
-            else return -1;
-            //return 0;
+        if (o.getAge() > super.getAge()) {
+            return -1;
         }
 
-        if(super.getAge()>o.getAge())
-        return 1;
-        else
-        return -1;        
+        if (o.getAge() < super.getAge()) {
+            return 1;
+        }
+
+        if (o.getId() > id) {
+            return -1;
+        }
+
+        if (o.getId() < id) {
+            return 1;
+        }
+
+        return 0;
     }
 
 
-    
-    
-    
+
+
+
 }
 
 

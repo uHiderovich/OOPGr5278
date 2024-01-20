@@ -1,27 +1,27 @@
 package Domain;
 
-public abstract class Person {
-    private String name;
-    private int age;
-    
-    public Person(String name, int age) {
+public abstract class Person<T extends String, E extends Integer> {
+    private T name;
+    private E age;
+
+    public Person(T name, E age) {
         this.name = name;
         this.age = age;
     }
 
-    public String getName() {
+    public T getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(T name) {
         this.name = name;
     }
 
-    public int getAge() {
+    public E getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(E age) {
         this.age = age;
     }
 
@@ -29,7 +29,6 @@ public abstract class Person {
     public String toString() {
         return "Person [name=" + name + ", age=" + age + "]";
     }
-    
 }
 
 

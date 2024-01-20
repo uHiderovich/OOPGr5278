@@ -6,15 +6,15 @@ import java.util.List;
 public class StudentIterator implements Iterator<Student> {
     private int counter;
     private final List<Student> students;
-    
+  
     public StudentIterator(List<Student> students) {
         this.students = students;
         this.counter = 0;
     }
-    
+
     @Override
     public boolean hasNext() {
-       return counter<students.size();
+       return counter < students.size();
     }
     @Override
     public Student next() {
@@ -22,9 +22,8 @@ public class StudentIterator implements Iterator<Student> {
         {
             return null;
         }
-        //counter++;
-        return students.get(counter++);        
+
+        return students.get(counter++);
     }
-    
 }
 

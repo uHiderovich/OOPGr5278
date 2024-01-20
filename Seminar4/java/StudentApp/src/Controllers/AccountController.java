@@ -1,8 +1,9 @@
 package Controllers;
 
 import Domain.Person;
-import Domain.Teacher;
 import Domain.Worker;
+
+import java.util.List;
 
 public class AccountController {
     public static <T extends Worker,V> void paySalary(T person, V salar)
@@ -10,13 +11,13 @@ public class AccountController {
         System.out.println(person.getName()  + " выплачена зарплата "+salar);
     }
 
-    // public void paySalary(Teacher person, int salar)
-    // {
-    //     System.out.println(person.getName()  + " выплачена зарплата "+salar);
-    // }
+    public static <T extends Person> double averageAge(List<T> persons) {
+        double sum = 0;
 
-    // public void paySalary(Student person, int salar)
-    // {
-    //     System.out.println(person.getName()  + " выплачена зарплата "+salar);
-    // }
+        for (T person : persons) {
+            sum += person.getAge();
+        }
+
+        return sum / persons.size();
+    }
 }
