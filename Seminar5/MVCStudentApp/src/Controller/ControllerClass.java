@@ -36,20 +36,20 @@ public class ControllerClass implements iGetController {
     public void update(String Request)
     {
         //MVP
-        studBuffer = model.getStudents();
-        if(tesdData(studBuffer))
-        {
-            view.printAllStudent(studBuffer);
-        }
-        else
-        {
-            System.out.println("Список студентов пуст!");
-        }
+//        studBuffer = model.getStudents();
+//        if(tesdData(studBuffer))
+//        {
+//            view.printAllStudent(studBuffer);
+//        }
+//        else
+//        {
+//            System.out.println("Список студентов пуст!");
+//        }
 
         //MVC
-        //view.printAllStudent(model.getStudents());
+        view.printAllStudent(model.getStudents());
     }
-    
+
 
     public void run()
     {
@@ -57,17 +57,23 @@ public class ControllerClass implements iGetController {
         boolean getNewIter = true;
         while(getNewIter)
         {
-            String command = view.prompt("Введите команду:");
+            String command = view.enterTheCommand();
             com = Command.valueOf(command.toUpperCase());
             switch(com)
             {
                 case EXIT:
                    getNewIter = false;
-                   System.out.println("Выход из программы");
+                   view.printExitMessage();
                    break;
                 case LIST:
                    view.printAllStudent(model.getStudents());
                    break;
+                case DELETE:
+                    Integer studentNumber = view.studentNumberToDelete();
+                    boolean isDeleted = model.deleteStudent(studentNumber);
+
+                    view.printDeletionResult(isDeleted, studentNumber);
+                    break;
             }
         }
     }

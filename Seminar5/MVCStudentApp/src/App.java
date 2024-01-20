@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import Controller.ControllerClass;
@@ -7,11 +8,33 @@ import Controller.Interfaces.iGetView;
 import Model.ModelClass;
 import Model.ModelClassFile;
 import Model.Domain.Student;
+import Model.ModelClassHash;
 import View.ViewClass;
+import View.ViewClassEng;
 
 public class App {
     public static void main(String[] args) throws Exception {
-       // System.out.println("Hello, World!");
+//        Student student1 = new Student("Ivan", 21);
+//        Student student2 = new Student("Anna", 25);
+//        Student student3 = new Student("Vasya", 22);
+//        Student student4 = new Student("Nastya", 27);
+//        Student student5 = new Student("Vasilisa", 26);
+//        Student student6 = new Student("Karina", 25);
+//
+//        HashMap<Integer, Student> studentHashMap = new HashMap<>();
+//        studentHashMap.put(0, student1);
+//        studentHashMap.put(1, student2);
+//        studentHashMap.put(2, student3);
+//        studentHashMap.put(3, student4);
+//        studentHashMap.put(4, student5);
+//        studentHashMap.put(5, student6);
+//
+//        iGetModel modelClassHash = new ModelClassHash(studentHashMap);
+//        ViewClassEng viewEng = new ViewClassEng();
+//
+//        ControllerClass controller2 = new ControllerClass(modelClassHash, viewEng);
+//        viewEng.setContr(controller2);
+//        viewEng.ViewRun();
 
         Student student1 = new Student("Ivan", 21);
         Student student2 = new Student("Anna", 25);
@@ -38,12 +61,11 @@ public class App {
 
         iGetModel model = new ModelClass(studList);
         ViewClass view = new ViewClass();
-        iGetModel fmodel = new ModelClassFile("StudentDB.csv");
+//        iGetModel fmodel = new ModelClassFile("StudentDB.csv");
 
-        ControllerClass controller = new ControllerClass(fmodel, view);
+        ControllerClass controller = new ControllerClass(model, view);
         view.setContr(controller);
         view.ViewRun();
-
 
         //controller.update("Маса и мет");
         //controller.run();

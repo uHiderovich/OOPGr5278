@@ -17,5 +17,13 @@ public class ModelClass implements iGetModel {
     {
         return students;
     }
-    
+
+    public boolean deleteStudent(Integer studentNumber) {
+        if (students.size() > studentNumber) {
+            students.remove(studentNumber - 1);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

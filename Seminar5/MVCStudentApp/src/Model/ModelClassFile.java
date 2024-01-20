@@ -18,7 +18,7 @@ public class ModelClassFile implements iGetModel {
 
         try(FileWriter fw = new FileWriter(fileName, true))
         {
-            fw.flush();    
+            fw.flush();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -59,10 +59,13 @@ public class ModelClassFile implements iGetModel {
                 fw.write(pers.getName()+" "+pers.getAge()+" "+pers.getId());
                 fw.append('\n');
             }
-            fw.flush();    
+            fw.flush();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    
+
+    public boolean deleteStudent(Integer studentNumber) {
+        return false;
+    }
 }
