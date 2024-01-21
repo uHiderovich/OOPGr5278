@@ -3,8 +3,6 @@ package View;
 import java.util.List;
 import java.util.Scanner;
 
-import Controller.ControllerClass;
-import Controller.Interfaces.iGetController;
 import Controller.Interfaces.iGetView;
 import Model.Domain.Student;
 

@@ -5,9 +5,7 @@ import java.util.*;
 import Controller.Interfaces.iGetController;
 import Controller.Interfaces.iGetModel;
 import Controller.Interfaces.iGetView;
-import Model.ModelClass;
 import Model.Domain.Student;
-import View.ViewClass;
 
 /**
  * Класс контроллера

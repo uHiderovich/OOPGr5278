@@ -1,6 +1,5 @@
 package View;
 
-import Controller.Interfaces.iGetController;
 import Controller.Interfaces.iGetView;
 import Model.Domain.Student;
 
