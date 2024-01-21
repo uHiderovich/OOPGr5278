@@ -30,7 +30,7 @@ public class App {
         studentHashMap.put(4, student5);
         studentHashMap.put(5, student6);
 
-        iGetModel modelClassHash = new ModelClassHash(studentHashMap);
+        iGetModel modelHash = new ModelClassHash(studentHashMap);
 
         // Модель 2
         Student student7 = new Student("Andrey", 22);
@@ -49,9 +49,13 @@ public class App {
         ViewClass view = new ViewClass();
         ViewClassEng viewEng = new ViewClassEng();
 
-        ControllerClass controller = new ControllerClass(modelClassHash);
+        ControllerClass controller = new ControllerClass();
         controller.addView("ru", view);
         controller.addView("en", viewEng);
+
+        controller.addModel(model);
+        controller.addModel(modelHash);
+
         controller.run();
     }
 }

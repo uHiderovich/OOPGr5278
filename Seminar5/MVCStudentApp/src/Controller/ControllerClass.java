@@ -21,8 +21,14 @@ public class ControllerClass implements iGetController {
      * Отображение
      */
     private iGetView view;
-
+    /**
+     * Словарь с достпными отображениями
+     */
     private HashMap<String, iGetView> viewsMap;
+    /**
+     * Список с достпными моделями
+     */
+    private List<iGetModel> models;
     /**
      * Список студентов
      */
@@ -30,12 +36,10 @@ public class ControllerClass implements iGetController {
 
     /**
      * Конструктор класса контроллера
-     * @param model модель
      */
-    public ControllerClass(iGetModel model) {
-        this.model = model;
-
+    public ControllerClass() {
         this.viewsMap = new HashMap<>();
+        this.models = new ArrayList<>();
     }
 
     public void setView(String language) throws ViewException {
@@ -44,6 +48,10 @@ public class ControllerClass implements iGetController {
         }
 
         this.view = viewsMap.get(language);
+    }
+
+    public void addModel(iGetModel model) {
+        this.models.add(model);
     }
 
     public void selectLanguage() throws ViewException  {
@@ -109,6 +117,11 @@ public class ControllerClass implements iGetController {
 
     public void run()
     {
+        if (models.size() == 0) {
+            System.out.println("No available models were found");
+            return;
+        }
+
         try {
             selectLanguage();
         } catch (ViewException e) {
@@ -129,13 +142,27 @@ public class ControllerClass implements iGetController {
                    view.printExitMessage();
                    break;
                 case LIST:
-                   view.printAllStudent(model.getStudents());
+                    for (iGetModel model : models) {
+                        view.printAllStudent(model.getStudents());
+                    }
                    break;
                 case DELETE:
                     Integer studentNumber = view.studentNumberToDelete();
-                    boolean isDeleted = model.deleteStudent(studentNumber);
+                    boolean studentIsRemoved = false;
 
-                    view.printDeletionResult(isDeleted, studentNumber);
+                    for (iGetModel model : models) {
+                        studentIsRemoved = model.deleteStudent(studentNumber);
+
+                        if (studentIsRemoved) {
+                            view.printStudentIsRemoved(studentNumber);
+                            break;
+                        }
+                    }
+
+                    if (!studentIsRemoved) {
+                        view.printStudentNotFound(studentNumber);
+                    }
+
                     break;
             }
         }

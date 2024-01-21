@@ -21,12 +21,12 @@ public class ViewClass implements iGetView {
         return Integer.parseInt(prompt("Введите номер студента:"));
     }
 
-    public void printDeletionResult(boolean isDeleted, Integer studentNumber) {
-        if (isDeleted) {
-            System.out.println("Студент под номером " + studentNumber + " удален");
-        } else {
-            System.out.println("Студента под номером " + studentNumber + " не существует");
-        }
+    public void printStudentIsRemoved(Integer studentNumber) {
+        System.out.println("Студент под номером " + studentNumber + " удален");
+    }
+
+    public void printStudentNotFound(Integer studentNumber) {
+        System.out.println("Студента под номером " + studentNumber + " не существует");
     }
 
     public void printAllStudent(List<Student> students)

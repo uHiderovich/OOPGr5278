@@ -29,7 +29,12 @@ public interface iGetView {
     /**
      * Распечатать результат удаления студента
      */
-    public void printDeletionResult(boolean isDeleted, Integer studentNumber);
+    public void printStudentIsRemoved(Integer studentNumber);
+
+    /**
+     * Распечатать результат если студент не найден
+     */
+    public void printStudentNotFound(Integer studentNumber);
 
     /**
      * Распечатать сообщение, запросить в вод данных

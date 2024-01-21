@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.Arrays;
 import java.util.List;
 
 import Controller.Interfaces.iGetModel;
@@ -28,11 +29,13 @@ public class ModelClass implements iGetModel {
     }
 
     public boolean deleteStudent(Integer studentNumber) {
-        if (students.size() > studentNumber) {
-            students.remove(studentNumber - 1);
-            return true;
-        } else {
-            return false;
+        for (Student student : students) {
+            if (student.getId() == studentNumber) {
+                students.remove(student);
+                return true;
+            }
         }
+
+        return false;
     }
 }

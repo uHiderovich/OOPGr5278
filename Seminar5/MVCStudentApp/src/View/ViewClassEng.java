@@ -20,12 +20,12 @@ public class ViewClassEng implements iGetView {
         return Integer.parseInt(prompt("Enter the student's number:"));
     }
 
-    public void printDeletionResult(boolean isDeleted, Integer studentNumber) {
-        if (isDeleted) {
-            System.out.println("Student under the number " + studentNumber + " has been deleted");
-        } else {
-            System.out.println("Student under the number " + studentNumber + " does not exist");
-        }
+    public void printStudentIsRemoved(Integer studentNumber) {
+        System.out.println("Student under the number " + studentNumber + " has been deleted");
+    }
+
+    public void printStudentNotFound(Integer studentNumber) {
+        System.out.println("Student under the number " + studentNumber + " does not exist");
     }
 
     public void printAllStudent(List<Student> students) {
