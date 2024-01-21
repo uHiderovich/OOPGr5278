@@ -14,13 +14,9 @@ import View.ViewClass;
  */
 public class ControllerClass implements iGetController {
     /**
-     * Модель
-     */
-    private iGetModel model;
-    /**
      * Отображение
      */
-    private iGetView view;
+    private iGetView selectedView;
     /**
      * Словарь с достпными отображениями
      */
@@ -47,7 +43,7 @@ public class ControllerClass implements iGetController {
             throw new ViewException("View not found");
         }
 
-        this.view = viewsMap.get(language);
+        this.selectedView = viewsMap.get(language);
     }
 
     public void addModel(iGetModel model) {
@@ -112,7 +108,9 @@ public class ControllerClass implements iGetController {
 //        }
 
         //MVC
-        view.printAllStudent(model.getStudents());
+        for (iGetModel model : models) {
+            selectedView.printAllStudent(model.getStudents());
+        }
     }
 
     public void run()
@@ -133,34 +131,34 @@ public class ControllerClass implements iGetController {
         boolean getNewIter = true;
         while(getNewIter)
         {
-            String command = view.enterTheCommand();
+            String command = selectedView.enterTheCommand();
             com = Command.valueOf(command.toUpperCase());
             switch(com)
             {
                 case EXIT:
                    getNewIter = false;
-                   view.printExitMessage();
+                    selectedView.printExitMessage();
                    break;
                 case LIST:
                     for (iGetModel model : models) {
-                        view.printAllStudent(model.getStudents());
+                        selectedView.printAllStudent(model.getStudents());
                     }
                    break;
                 case DELETE:
-                    Integer studentNumber = view.studentNumberToDelete();
+                    Integer studentNumber = selectedView.studentNumberToDelete();
                     boolean studentIsRemoved = false;
 
                     for (iGetModel model : models) {
                         studentIsRemoved = model.deleteStudent(studentNumber);
 
                         if (studentIsRemoved) {
-                            view.printStudentIsRemoved(studentNumber);
+                            selectedView.printStudentIsRemoved(studentNumber);
                             break;
                         }
                     }
 
                     if (!studentIsRemoved) {
-                        view.printStudentNotFound(studentNumber);
+                        selectedView.printStudentNotFound(studentNumber);
                     }
 
                     break;
