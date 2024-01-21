@@ -5,10 +5,19 @@ import java.util.List;
 import Controller.Interfaces.iGetModel;
 import Model.Domain.Student;
 
+/**
+ * Класс модели списка студентов
+ */
 public class ModelClass implements iGetModel {
-
+    /**
+     * Список студентов
+     */
     private List<Student> students;
 
+    /**
+     * Конструкторк модели
+     * @param students Список студентов
+     */
     public ModelClass(List<Student> students) {
         this.students = students;
     }

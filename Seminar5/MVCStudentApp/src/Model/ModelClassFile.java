@@ -10,9 +10,18 @@ import java.util.List;
 import Controller.Interfaces.iGetModel;
 import Model.Domain.Student;
 
+/**
+ * Класс модели для работы с файлом со списком студентов
+ */
 public class ModelClassFile implements iGetModel {
+    /**
+     * Имя файла со списокм студентов
+     */
     private String fileName;
 
+    /**
+     * Конструктор модели для работы с файлом со списком студентов
+     */
     public ModelClassFile(String fileName) {
         this.fileName = fileName;
 
@@ -24,7 +33,6 @@ public class ModelClassFile implements iGetModel {
         }
     }
 
-   // @Override
     public List<Student> getStudents() {
         List<Student> students  = new ArrayList<Student>();
         try
@@ -50,6 +58,10 @@ public class ModelClassFile implements iGetModel {
         return students;
     }
 
+    /**
+     * Метод записи студентов в файл
+     * @param students
+     */
     public void saveAllStudentToFile(List<Student> students)
     {
         try(FileWriter fw = new FileWriter(fileName, true))

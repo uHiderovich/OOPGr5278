@@ -8,12 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ViewClassEng implements iGetView {
-    private iGetController contr;
-
-    public void setContr(iGetController contr) {
-        this.contr = contr;
-    }
-
     public String enterTheCommand() {
         return prompt("Enter the command:");
     }
@@ -47,9 +41,5 @@ public class ViewClassEng implements iGetView {
         Scanner in = new Scanner(System.in);
         System.out.println(msg);
         return in.nextLine();
-    }
-
-    public void ViewRun() {
-        contr.run();
     }
 }

@@ -9,13 +9,6 @@ import Controller.Interfaces.iGetView;
 import Model.Domain.Student;
 
 public class ViewClass implements iGetView {
-
-    private iGetController contr;
-
-    public void setContr(iGetController contr) {
-        this.contr = contr;
-    }
-
     public String enterTheCommand() {
         return prompt("Введите команду:");
     }
@@ -51,10 +44,5 @@ public class ViewClass implements iGetView {
         Scanner in = new Scanner(System.in);
         System.out.println(msg);
         return in.nextLine();
-    }
-
-    public void ViewRun()
-    {
-        contr.run();
     }
 }

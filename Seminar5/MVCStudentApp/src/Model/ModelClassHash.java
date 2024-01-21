@@ -7,9 +7,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Класс модели таблицы студентов
+ */
 public class ModelClassHash implements iGetModel {
+    /**
+     * Таблица студентов
+     */
     private HashMap<Integer, Student> students;
 
+    /**
+     * Конструкторк модели
+     * @param students Таблица студентов
+     */
     public ModelClassHash(HashMap<Integer, Student> students) {
         this.students = students;
     }
